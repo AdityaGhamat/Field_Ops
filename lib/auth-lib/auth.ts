@@ -12,4 +12,28 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        required: false,
+        defaultValue: "TECHNICIAN",
+      },
+      phone: {
+        type: "string",
+        required: false,
+        defaultValue: "",
+      },
+      skills: {
+        type: "string[]",
+        required: false,
+        defaultValue: [],
+      },
+      isAvailable: {
+        type: "boolean",
+        required: false,
+        defaultValue: true,
+      },
+    },
+  },
 });
