@@ -21,7 +21,7 @@ export async function PATCH(request: Request) {
         $push: {
           timeline: {
             status: newStatus,
-            timeStamp: new Date(),
+            timestamp: new Date(),
             updatedBy: userId,
             note: note,
           },

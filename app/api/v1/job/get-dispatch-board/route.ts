@@ -5,8 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   try {
     await dbConnect();
-    const body = await request.json();
-    const { targetDate }: { targetDate: Date } = body;
+    const { searchParams } = new URL(request.url);
+    const targetDate = searchParams.get("targetDate");
+    if (!targetDate)
+      return NextResponse.json(
+        { error: "Missing targetDate" },
+        { status: 400 },
+      );
     const start = new Date(targetDate).setHours(0, 0, 0, 0);
     const end = new Date(targetDate).setHours(23, 59, 59, 999);
     const jobs = await Job.find({

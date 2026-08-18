@@ -5,8 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   try {
     await dbConnect();
-    const body = await request.json();
-    const { techId } = body;
+
+    const { searchParams } = new URL(request.url);
+    const techId = searchParams.get("techId");
 
     const start = new Date().setHours(0, 0, 0, 0);
     const end = new Date().setHours(23, 59, 59, 999);

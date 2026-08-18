@@ -5,8 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   try {
     await dbConnect();
-    const body = await request.json();
-    const { jobId }: { jobId: string } = body;
+    const { searchParams } = new URL(request.url);
+    const jobId = searchParams.get("jobId");
     const job = await Job.findById(jobId).lean();
     if (!job) {
       return NextResponse.json({
