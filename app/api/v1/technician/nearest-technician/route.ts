@@ -9,7 +9,7 @@ export interface NearestTechnicianReq {
   lat: number;
   maxDistanceMeters: number;
 }
-export default async function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     await dbConnect();
     const body = await request.json();

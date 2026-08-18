@@ -2,7 +2,7 @@ import { dbConnect } from "@/lib/database/db";
 import { Job } from "@/lib/schema/job";
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     await dbConnect();
     const body = await request.json();

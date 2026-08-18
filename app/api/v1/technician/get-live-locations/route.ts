@@ -3,7 +3,7 @@ import { User } from "@/lib/schema/user";
 import { success } from "better-auth";
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     await dbConnect();
     const techs = await User.find({ role: "TECHNICIAN", isAvailable: true })

@@ -2,7 +2,7 @@ import { dbConnect } from "@/lib/database/db";
 import { Customer, ICustomer } from "@/lib/schema/customer";
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function GET(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     await dbConnect();
     const q = request.nextUrl.searchParams;

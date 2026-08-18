@@ -7,7 +7,7 @@ export interface UpdateTechnicianLocation {
   lng: number;
   lat: number;
 }
-export default async function PATCH(request: Request) {
+export async function PATCH(request: Request) {
   try {
     await dbConnect();
     const body = await request.json();
